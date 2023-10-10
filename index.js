@@ -16,7 +16,7 @@ const uploadMiddleware = multer({ limits: { fileSize: maxSize } });
 let refresh = null;
 app.use(
   cors({
-    origin: 'https://inkwell-sooty.vercel.app/',
+    origin: 'https://inkwell-sooty.vercel.app',
     credentials: true,
   })
 );
