@@ -23,6 +23,13 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
 mongoose.connect(
   `mongodb+srv://adhayan:14BQYGuTg3BTTVbW@cluster0.usr4syi.mongodb.net/?retryWrites=true&w=majority`
 );
