@@ -14,6 +14,12 @@ const salt = bcrypt.genSaltSync(10);
 const maxSize = 1024*1024*1024;
 const uploadMiddleware = multer({ limits: { fileSize: maxSize } });
 let refresh = null;
+
+const corsOptions = {
+  origin: 'https://inkwell-sooty.vercel.app',
+  credentials: true,
+};
+
 app.use(
   cors({
     origin: 'https://backend-blog-jwod.onrender.com',
@@ -39,7 +45,7 @@ app.get("/", (req, res) => {
   res.send("hello world");
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", cors(corsOptions),async (req, res) => {
   const { username, password } = req.body;
   const userDoc = await User.findOne({ username });
   const passCheck = bcrypt.compareSync(password, userDoc.password);
