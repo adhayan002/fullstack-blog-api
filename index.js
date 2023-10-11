@@ -22,7 +22,7 @@ const corsOptions = {
 
 app.use(
   cors({
-    origin: 'https://backend-blog-jwod.onrender.com',
+    origin: 'https://inkwell-sooty.vercel.app',
     credentials: true,
   })
 );
